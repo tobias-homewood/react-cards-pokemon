@@ -13,8 +13,8 @@ function useFlip(initialState = false) {
 
 function useAxios(url) {
     const [data, setData] = useState([]);
-    const addData = async () => {
-        const response = await axios.get(url);
+    const addData = async (params) => {
+        const response = await axios.get(params ? url + params : url);
         setData(data => [...data, { ...response.data, id: uuid() }]);
     }
 
